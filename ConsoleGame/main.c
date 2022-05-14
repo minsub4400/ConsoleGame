@@ -1,5 +1,6 @@
 #include "Type.h"
 #include "App.h"
+#include "Common.h"
 
 int main(void)
 {

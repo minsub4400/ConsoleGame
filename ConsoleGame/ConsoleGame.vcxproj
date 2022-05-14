@@ -20,12 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\App.c" />
+    <ClCompile Include="Framework\Input.c" />
     <ClCompile Include="Framework\Renderer.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Framework\Input.h" />
     <ClInclude Include="Framework\Renderer.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>

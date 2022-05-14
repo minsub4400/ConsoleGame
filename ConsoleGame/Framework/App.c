@@ -2,6 +2,7 @@
 #include "../Type.h"
 #include "Renderer.h"
 #include "../Common.h"
+#include "Input.h"
 
 void processinput(void);
 void update(void);
@@ -41,7 +42,24 @@ char str[128];
 
 void render(void)
 {
-	sprintf_s(str, sizeof(str), "안녕 나야, 잘지내지 요즘 날씨 많이 춥지..");
+	sprintf_s(str, sizeof(str), "아무런 키가 눌려있지 않은 상태.");
+
+	if (Input_GetKeyDown(VK_UP))
+	{
+		sprintf_s(str, sizeof(str), "위쪽 방향키 눌림");
+	}
+	if (Input_GetKeyDown(VK_DOWN))
+	{
+		sprintf_s(str, sizeof(str), "아래쪽 방향키 눌림");
+	}
+	if (Input_GetKeyDown(VK_LEFT))
+	{
+		sprintf_s(str, sizeof(str), "왼쪽 방향키 눌림");
+	}
+	if (Input_GetKeyDown(VK_RIGHT))
+	{
+		sprintf_s(str, sizeof(str), "아래쪽 방향키 눌림");
+	}
 
 	Renderer_drawText(str, sizeof(str));
 	//화면 전환
