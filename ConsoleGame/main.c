@@ -6,7 +6,8 @@ int main(void)
 {
 	//App.h - 게임 루프
 	//Renderer.h - 버퍼 스크린(화면)
-
+	//Input.h - 입력 키
+	//Time.h - DeltaTime
 	//프로그램 초기화
 	if (false == App_init())
 	{

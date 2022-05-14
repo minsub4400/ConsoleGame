@@ -22,6 +22,7 @@
     <ClCompile Include="Framework\App.c" />
     <ClCompile Include="Framework\Input.c" />
     <ClCompile Include="Framework\Renderer.c" />
+    <ClCompile Include="Framework\Timer.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
@@ -29,6 +30,7 @@
     <ClInclude Include="Common.h" />
     <ClInclude Include="Framework\Input.h" />
     <ClInclude Include="Framework\Renderer.h" />
+    <ClInclude Include="Framework\Timer.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
