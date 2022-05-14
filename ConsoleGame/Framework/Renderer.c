@@ -1,5 +1,6 @@
 #include "../Type.h"
 #include "../Common.h"
+#include "Text.h"
 
 HANDLE s_screens[2]; // 스크린 버퍼를 저장할 두개의 공간 할당
 
@@ -60,9 +61,16 @@ void Renderer_clear(void) // 백 버퍼의 화면을 클리어 해주는 함수
 	csbi.dwCursorPosition.Y = 0;
 	SetConsoleCursorPosition(consoleHandle, csbi.dwCursorPosition);
 }
-void Renderer_drawText(const char* text, int numberOfText)
+void Renderer_drawText(const Text* text, int32 numberOfText, int32 x, int32 y)
 {
 	HANDLE backBuffer = s_screens[s_backBufferIndex];
-	WriteConsoleA(backBuffer, text, numberOfText, NULL, NULL);
-	// WriteConsoleA에서 A는 멀티바이트
+	//커서 위치 옮기기
+	COORD pos = { x, y };
+	SetConsoleCursorPosition(backBuffer, pos);
+
+	for (int32 i = 0; i < numberOfText; ++i)
+	{
+		SetConsoleTextAttribute(backBuffer, text[i].Attributes);
+		WriteConsole(backBuffer, &text[i].Char, 1, NULL, NULL);
+	}
 }
