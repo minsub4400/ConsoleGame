@@ -40,4 +40,4 @@ void TextCopy(CHAR_INFO* dest, WCHAR* src, WORD attributes);
 #define TextCopyWithWhite(dest, src) TextCopy(dest, src, TEXT_COLOR_WHITE)
 
 //텍스트의 길이는 구하는 함수
-int32 TextLen(CHAR_INFO* text);
+int32 TextLen(Text* text);

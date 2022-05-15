@@ -13,7 +13,7 @@ void TextCopy(CHAR_INFO* dest, WCHAR* src, WORD attributes)
 	dest->Attributes = 0;
 }
 
-int32 TextLen(CHAR_INFO* text)
+int32 TextLen(Text* text)
 {
 	int32 result = 0;
 	while (text->Char.UnicodeChar)
