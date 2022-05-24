@@ -9,11 +9,11 @@ int main(void)
 	//Input.h - 입력 키
 	//Time.h - DeltaTime
 	//프로그램 초기화
-	if (false == App_init())
+	if (false == App_Init())
 	{
 		puts("App 실행 실패.");
 		exit(1);
 	}
 	//프로그램 실행
-	App_run();
+	App_Run();
 }

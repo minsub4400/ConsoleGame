@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdbool.h>
+#include "Type.h"
 
-bool App_init(void);
-void App_run(void);
+bool App_Init();
+void App_Run();

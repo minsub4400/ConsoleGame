@@ -6,7 +6,7 @@
 //bool s_isKeyDownOnPrevFrame[256];
 //bool s_isKeyDownOnCurrentFrame[256];
 
-void Input_update(void)
+void Input_Update(void)
 {
 	//memcpy(s_isKeyDownOnPrevFrame, s_isKeyDownOnCurrentFrame, sizeof(s_isKeyDownOnCurrentFrame)); //현재의 값을 이전에 값 위치로 복사
 
@@ -24,6 +24,7 @@ void Input_update(void)
 }
 bool Input_GetKeyUp(uint8 vkey) // 키가 떼졌다면, true 아니면 false
 {
+	//if (false == s_isKeyDownOnPrevFrame[vkey] && true == s_isKeyDownOnCurrentFrame[vkey])
 	if (GetAsyncKeyState(vkey) & 0x0000)
 	{
 		return true;
@@ -35,6 +36,7 @@ bool Input_GetKeyUp(uint8 vkey) // 키가 떼졌다면, true 아니면 false
 }
 bool Input_GetKeyDown(uint8 vkey) // 키가 눌렸을때, true 아니면 false
 {
+	//if (true == s_isKeyDownOnPrevFrame[vkey] && false == s_isKeyDownOnCurrentFrame[vkey])
 	if (GetAsyncKeyState(vkey) & 0x8000)
 	{
 		return true;
@@ -46,6 +48,7 @@ bool Input_GetKeyDown(uint8 vkey) // 키가 눌렸을때, true 아니면 false
 }
 bool Input_GetKey(uint8 vkey) // 키가 이전 프레임과 현제 프레임에 모두 눌렸다면, true 아니면 false
 {
+	//if (true == s_isKeyDownOnPrevFrame[vkey] && true == s_isKeyDownOnCurrentFrame[vkey])
 	if (GetAsyncKeyState(vkey) && GetAsyncKeyState(vkey))
 	{
 		return true;

@@ -58,7 +58,7 @@ void render_title(void)
 	TextCopyWithWhite(data->TitleText[0], L"스페이스키를 누르면 다음으로 넘어갑니다.");
 	Text* text = data->TitleText[0];
 	int32 len = TextLen(text);
-	Renderer_drawText(text, len, 20, 10);
+	Renderer_DrawText(text, len, 20, 10);
 }
 void release_title(void)
 {
@@ -67,26 +67,49 @@ void release_title(void)
 }
 #pragma endregion
 
+#include "Player.h"
+
 #pragma region Main Scene
+
+typedef struct tagMainSceneData
+{
+	Player Player;
+
+} MainSceneData;
+
 void init_main(void)
 {
+	g_Scene.Data = malloc(sizeof(MainSceneData));
 
+	MainSceneData* data = (MainSceneData*)g_Scene.Data;
+
+	Player_Init(&data->Player);
 }
+
 void update_main(void)
 {
+	MainSceneData* data = (MainSceneData*)g_Scene.Data;
 
+	Player_Update(&data->Player);
 }
+
 void render_main(void)
 {
+	MainSceneData* data = (MainSceneData*)g_Scene.Data;
 
+	Player_Render(&data->Player);
 }
+
 void release_main(void)
 {
+	MainSceneData* data = (MainSceneData*)g_Scene.Data;
 
+	Player_Release(&data->Player);
+
+	SafeFree(g_Scene.Data);
 }
 
 #pragma endregion
-
 
 #pragma region Minsub Scene
 typedef struct tagMinSubData
@@ -128,7 +151,7 @@ void update_minsub(void)
 void render_minsub(void)
 {
 	MinSubData* data = (MinSubData*)g_Scene.Data;
-	Renderer_drawText(data->minsub, data->len, data->coord.X, data->coord.Y);
+	Renderer_DrawText(data->minsub, data->len, data->coord.X, data->coord.Y);
 }
 
 void release_minsub(void)
@@ -149,6 +172,11 @@ void Scene_SetNextScene(ESceneType scene)
 void Scene_Change(void)
 {
 	assert(s_nextScene != SCENE_NULL);
+
+	if (g_Scene.Release)
+	{
+		g_Scene.Release();
+	}
 
 	switch (s_nextScene)
 	{
