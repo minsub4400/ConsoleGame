@@ -2,12 +2,13 @@
 
 #include "../Common.h"
 #include "../Framework/Text.h"
+#include "Bullet.h"
 
 typedef struct tagPlayer
 {
 	Text Text;
-	COORD Coord; // ÁÂÇ¥
-
+	COORD Coord;
+	Bullet bullet;
 } Player;
 
 void Player_Init(Player* player);
